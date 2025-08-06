@@ -540,20 +540,3 @@ add_action('admin_enqueue_scripts', function () {
 
 
 require_once get_template_directory() . '/position-block/position-block.php';
-function my_position_block_scripts() {
-    wp_enqueue_script(
-        'position-block-script1',
-        get_template_directory_uri() . '/position-block/global-responsive-hide.js',
-        array('jquery'),
-        '1.0',
-        true
-    );
-    wp_enqueue_script(
-        'position-block-script2',
-        get_template_directory_uri() . '/position-block/global-position-settings.js',
-        array('jquery'),
-        '1.0',
-        true
-    );
-}
-add_action('wp_enqueue_scripts', 'my_position_block_scripts');
