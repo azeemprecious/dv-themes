@@ -122,6 +122,27 @@
         return extraProps;
     }
     addFilter('blocks.getSaveContent.extraProps', 'gps/hide-classes', applyHideClasses);
+    
+    var withHideClassesInEditor = createHigherOrderComponent(function (BlockListBlock) {
+        return function (props) {
+            var attributes = props.attributes;
+            var extraClasses = props.className || '';
+
+            if (attributes.gpsHideOnMobile) {
+                extraClasses += ' sm-hide';
+            }
+            if (attributes.gpsHideOnTablet) {
+                extraClasses += ' md-hide';
+            }
+            if (attributes.gpsHideOnDesktop) {
+                extraClasses += ' dt-hide';
+            }
+
+            return el(BlockListBlock, Object.assign({}, props, { className: extraClasses.trim() }));
+        };
+    }, 'withHideClassesInEditor');
+
+    addFilter('editor.BlockListBlock', 'gps/hide-classes-editor', withHideClassesInEditor);
 
 })(
     window.wp.blocks,
