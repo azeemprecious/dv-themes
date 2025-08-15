@@ -24,3 +24,5 @@ function gps_enqueue_responsive_hide_assets() {
 }
 add_action( 'enqueue_block_editor_assets', 'gps_enqueue_responsive_hide_assets' );
 
+
+
