@@ -411,10 +411,10 @@ add_action('wp_body_open', function () {
 add_action('admin_enqueue_scripts', 'dv_enqueue_ajax_script');
 function dv_enqueue_ajax_script() {
     wp_enqueue_script('plugin-installer');
-    wp_localize_script('dv-plugin-installer', 'dv_ajax_object', [
-        'ajax_url' => admin_url('admin-ajax.php'),
-        'nonce'    => wp_create_nonce('dv_plugin_nonce'),
-    ]);
+   wp_localize_script('jquery', 'dv_ajax_object', [
+    'ajax_url' => admin_url('admin-ajax.php'),
+    'nonce'    => wp_create_nonce('dv_plugin_nonce'),
+]);
 }
 
 add_action('wp_ajax_dv_bulk_install_activate_plugin', 'dv_bulk_install_activate_plugin');
